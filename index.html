@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id="hesapMakinasi">
+    <div id="ekran">
+        <input type="text" id="sonuc" placeholder="0">
+    </div>
+    <div id="sayilar">
+    </div>
+    <button class="btn">7</button>
+    <button class="btn">8</button>
+    <button class="btn">9</button>
+    <button class="btn">+</button>
+    <button class="btn">4</button>
+    <button class="btn">5</button>
+    <button class="btn">6</button>
+    <button class="btn">-</button>
+    <button class="btn">1</button>
+    <button class="btn">2</button>
+    <button class="btn">3</button>
+    <button class="btn">/</button>
+    <button class="btn">0</button>
+    <button class="btn">.</button>
+    <button class="btn">=</button>
+    <button class="btn">*</button>
+</div>
+</body>
+</html>
+<style>
+    #hesapMakinasi{
+        margin: auto;
+        width: 350px;
+        height: auto;
+        background-color: slategray;
+        border-radius: 5px;
+        padding: 10px;
+        position: absolute;
+        top: 50%;
+         left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    #ekran{
+        padding: 10px 0px 10px 0px;
+        text-align: center;
+    }
+    #sonuc{
+        padding: 10px;
+        width: 90%;
+        border: none;
+        border-radius: 5px;
+        text-align: right;
+        font-size: 50px;
+        word-wrap: break-word;
+    }
+    #sayilar{
+        text-align:center;
+    }
+    .btn{
+        font-size:large;
+        width: 70px;
+        height: 50px;
+        margin: 4px;
+        border-radius: 5px;
+        background-color: whitesmoke;
+        border: none;
+        outline: none;
+        background: none;
+         border: 2px solid #2c3e50;
+        font-family: "Tahoma", sans-serif;
+        text-transform: uppercase;
+        cursor: pointer;
+        position: relative;
+        transition: color 0.4s linear;
+    }
+    .btn:hover {
+    color: #FFF;
+    }
+    .btn::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    transition: transform 0.5s;
+    transform-origin: 0 0;
+    transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+    }
+    .btn1::before {
+    transform: scaleX(0);
+    }
+
+    .btn1:hover::before {
+    transform: scaleX(1);
+    }
+</style>
+<script>
+   "use strict";
+  var _sonuc = document.getElementById("sonuc");
+
+  function hesapla() {
+    var _deger = this.innerHTML;
+
+    if (_deger == "=") {
+      try {
+        _sonuc.value = eval(_sonuc.value);
+      } catch (e) {
+        _sonuc.value = "0";
+      }
+      return;
+    }
+
+    _sonuc.value += _deger;
+  }
+ 
+  var _sayilar = document.getElementsByTagName("button"),
+    _sayiUzunluk = _sayilar.length,
+    i = 0,
+    _sonuc = document.getElementById("sonuc");
+
+  for (i = 0; i < _sayiUzunluk; i++) {
+    _sayilar[i].onclick = hesapla;
+  }
+
+  function hesapla() {
+    var _deger = this.innerHTML;
+
+    if (_deger == "=") {
+      try {
+        _sonuc.value = eval(_sonuc.value);
+      } catch (e) {
+        _sonuc.value = "0";
+      }
+      return;
+    }
+
+    _sonuc.value += _deger;
+  }
+</script>
